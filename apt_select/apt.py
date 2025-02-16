@@ -5,7 +5,7 @@ from os import path
 from apt_select.utils import utf8_decode
 
 SUPPORTED_KERNEL = 'Linux'
-SUPPORTED_DISTRIBUTION_TYPE = 'Ubuntu'
+SUPPORTED_DISTRIBUTION_TYPE = ('Ubuntu', 'Linuxmint')
 
 UNAME = 'uname'
 KERNEL_COMMAND = (UNAME, '-s')
@@ -68,7 +68,7 @@ class System(object):
                     "%s is required." % SUPPORTED_DISTRIBUTION_TYPE
                 ))
 
-        if self.dist != SUPPORTED_DISTRIBUTION_TYPE:
+        if self.dist not in SUPPORTED_DISTRIBUTION_TYPE:
             raise OSError(
                 "%s distributions are not supported. %s is required." % (
                     self.dist, SUPPORTED_DISTRIBUTION_TYPE
